@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Hill Climb Adventure</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<!-- HUD (visible while playing) -->
+<div id="hud" class="hidden">
+  <div class="hud-left">
+    <div class="fuel"><span class="lbl">Fuel</span><div class="bar"><div id="fuelFill"></div></div></div>
+    <div class="stat"><span class="lbl">Coins</span><b id="coinsVal">0</b></div>
+    <div class="stat"><span class="lbl">Distance</span><b id="distVal">0 m</b></div>
+  </div>
+  <div class="hud-right">
+    <div class="stat"><span class="lbl">Speed</span><b id="speedVal">0 km/h</b></div>
+    <button id="btnPause" class="icon-btn" aria-label="Pause">II</button>
+  </div>
+  <button id="btnBrake" class="drive-btn left" aria-label="Brake / reverse">Brake</button>
+  <button id="btnGas" class="drive-btn right" aria-label="Accelerate">Gas</button>
+</div>
+
+<!-- Menus -->
+<div id="menu" class="overlay">
+  <div class="panel">
+    <h1>Hill Climb Adventure</h1>
+    <p><span id="menuVeh">Monster Truck</span> &middot; Desert</p>
+    <button id="btnPlay" class="btn">Play</button>
+    <button id="btnGarage" class="btn alt">Garage</button>
+    <p class="hint">Right arrow: gas &middot; Left arrow: brake &middot; A / D: balance in the air<br>Best: <b id="menuBest">0 m</b> &middot; Total coins: <b id="menuCoins">0</b></p>
+  </div>
+</div>
+<div id="pause" class="overlay hidden">
+  <div class="panel">
+    <h2>Paused</h2>
+    <button id="btnResume" class="btn">Resume</button>
+    <button id="btnSound" class="btn alt">Sound: On</button>
+    <button id="btnMusic" class="btn alt">Music: On</button>
+    <button id="btnRestart" class="btn alt">Restart</button>
+    <button id="btnPauseHome" class="btn alt">Home</button>
+  </div>
+</div>
+<div id="over" class="overlay hidden">
+  <div class="panel">
+    <h2 id="overReason">Game over</h2>
+    <p>Distance <b id="overDist">0 m</b> &middot; Coins collected <b id="overCoins">0</b></p>
+    <p>Earned <b id="overEarned">0</b> coins &middot; Best <b id="overBest">0 m</b></p>
+    <p>Total coins: <b id="overTotal">0</b></p>
+    <button id="btnRetry" class="btn">Retry</button>
+    <button id="btnOverGarage" class="btn alt">Garage</button>
+    <button id="btnMenu" class="btn alt">Main menu</button>
+  </div>
+</div>
+<div id="garage" class="overlay hidden">
+  <div class="panel garage">
+    <div class="g-top"><button id="gBack" class="btn alt sm">&lsaquo; Back</button><div><b id="gName">Jeep</b><br><small>Coins: <b id="gCoins">0</b></small></div><button id="gHome" class="btn alt sm">Home</button></div>
+    <div class="g-mid"><button id="gPrev" class="btn alt arrow" aria-label="Previous vehicle">&lsaquo;</button><canvas id="pv" width="300" height="150"></canvas><button id="gNext" class="btn alt arrow" aria-label="Next vehicle">&rsaquo;</button></div>
+    <div id="gStats" class="g-stats"></div>
+    <button id="gAction" class="btn">Select</button>
+    <div id="gUp" class="g-up"></div>
+  </div>
+</div>
+<div id="wallet" class="wallet hidden">Coins: <b id="walletVal">0</b></div>
+<div id="rotate" class="overlay hidden"><div class="panel"><h2>Rotate your device</h2><p>This game plays in landscape.</p></div></div>
+<div id="err" class="overlay hidden"><div class="panel"><h2>Matter.js not found</h2><p>Put <b>matter.min.js</b> in the <b>libs</b> folder, then reload.</p></div></div>
+
+<script src="libs/matter.min.js"></script>
+<script src="js/vehicles.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
